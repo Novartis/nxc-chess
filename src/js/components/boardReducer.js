@@ -72,7 +72,7 @@ const initialState = {
 
 export default function piecesMap(state = initialState, action = {}) {
     const payload = action.payload;
-    const { pieces, boardLocs, deadPieces } = state;
+    const { pieces, boardLocs, deadPieces, win } = state;
     const boardLocsCopy = JSON.parse(JSON.stringify(boardLocs));
 
     switch (action.type) {
@@ -187,9 +187,9 @@ export default function piecesMap(state = initialState, action = {}) {
             const capturingColor = boardLocs[payload.oldCol][payload.oldRow];
             boardLocsCopy[payload.oldCol][payload.oldRow] = null;
             boardLocsCopy[payload.newCol][payload.newRow] = capturingColor;
-            let gameOver = 'null';
+            let gameOver = win;
             const deadPieceCode = pieces[payload.killedPiece][2];
-            if (payload.killedPiece.charAt(0) === 'K') {
+            if (payload.killedPiece === 'KB' || payload.killedPiece === 'KW') {
                 gameOver = capturingColor;
             }
             return {

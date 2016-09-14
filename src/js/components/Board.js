@@ -62,13 +62,12 @@ class Board extends Component {
 
     render() {
         const { win } = this.props;
-        let squares = [];
+        const squares = [];
         for (let i = 0; i < 64; i++) {
             const square = this.renderSquare(i);
             squares.push(square);
         }
         return (
-
             <div style={{ height: '100%', width: '100%', display: 'flex', flexWrap: 'wrap' }}>
 
                 {squares}
