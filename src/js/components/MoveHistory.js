@@ -2,7 +2,7 @@
 import React, { Component, PropTypes as Type } from 'react';
 import { connect } from 'react-redux';
 
-class Sidebar extends Component {
+class MoveHistory extends Component {
     static propTypes = {
         completedMoves: Type.array,
     };
@@ -47,4 +47,4 @@ function mapStateToProps(state) {
     return { completedMoves: state.pieces.completedMoves };
 }
 
-export default connect(mapStateToProps)(Sidebar);
+export default connect(mapStateToProps)(MoveHistory);
