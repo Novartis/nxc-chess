@@ -11,7 +11,9 @@ class Sidebar extends Component {
         const turn = number + 1; // Start at 1 not 0.
         const color = move.color;
         const action = move.killedPiece ? `captured ${move.killedPiece} at ` : 'to';
-        const position = `[${move.newCol}, ${move.newRow}]`;
+        // Column letter: a - h is char code 97 - 104.
+        // Row number: chess notation will be opposite of the numbers in the logical grid.
+        const position = `${String.fromCharCode(move.newCol + 97)}${8 - move.newRow}`;
         const string = `${turn}. ${color}: ${move.piece} ${action} ${position}`;
         const key = string; // Enforced uniqueness by move and turn number.
         return (
