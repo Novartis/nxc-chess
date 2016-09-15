@@ -12,7 +12,7 @@ import ReactDOM from 'react-dom';
 
 import BoardRootContainer from './root/BoardRootContainer';
 
-ReactDOM.render(<div style={{ height: '400px', width: '400px' }}>
+ReactDOM.render(<div>
         <BoardRootContainer />
     </div>,
     document.getElementById('content')

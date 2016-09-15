@@ -8,6 +8,7 @@ import pieceCodes from './pieceCodes';
 import Piece from './Piece';
 
 import Sidebar from './Sidebar';
+import MoveHistory from './MoveHistory';
 
 /**
  * This is the root react component. Replace everything in here
@@ -68,10 +69,21 @@ class Board extends Component {
             squares.push(square);
         }
         return (
-            <div style={{ height: '100%', width: '100%', display: 'flex', flexWrap: 'wrap' }}>
-
-                {squares}
-                <Sidebar win={win} />
+            <div>
+                <div style={{ height: '400px', width: '400px', float: 'left' }}>
+                    <div
+                      style={{
+                          height: '100%',
+                          width: '100%',
+                          display: 'flex',
+                          flexWrap: 'wrap',
+                      }}
+                    >
+                        {squares}
+                    </div>
+                    <Sidebar win={win} />
+                </div>
+                <MoveHistory />
             </div>
         );
     }
