@@ -3,6 +3,7 @@
   "description": "React/Redux chess game using react-dnd",
   "version": "0.0.1",
   "main": "lib/es5/main.js",
+  "author": "Katy Johnson <katy.johnson.2594@gmail.com>",
   "dependencies": {
     "react-dnd": "^2.1.4",
     "react-dnd-html5-backend": "^2.1.2",
