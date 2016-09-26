@@ -11,3 +11,5 @@ When that's done, run `gulp` and the browser page will automatically open.
 Then, simply click on a piece to get started!
 
 Game play follows normal chess, and rules enabled include castling and the special first-move for pawns.
+
+![alt text](demo.gif)
