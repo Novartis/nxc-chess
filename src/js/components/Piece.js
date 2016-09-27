@@ -31,7 +31,7 @@ class Piece extends Component {
         turn: Type.string,
     };
     render() {
-        const { connectDragSource, isDragging } = this.props;
+        const { connectDragSource, isDragging, color } = this.props;
         const style = {
             fontSize: '30px',
             position: 'absolute',
@@ -40,6 +40,7 @@ class Piece extends Component {
             transform: 'translate(-50%, -50%)',
             cursor: 'move',
             opacity: isDragging ? 0.2 : 1,
+            color,
         };
 
         return connectDragSource(<div

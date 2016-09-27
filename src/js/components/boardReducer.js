@@ -68,12 +68,23 @@ const initialState = {
         ['black', 'black', null, null, null, null, 'white', 'white'],
         ['black', 'black', null, null, null, null, 'white', 'white'],
     ],
+    completedMoves: [],
 };
 
 export default function piecesMap(state = initialState, action = {}) {
     const payload = action.payload;
-    const { pieces, boardLocs, deadPieces } = state;
+    const { pieces, boardLocs, deadPieces, win } = state;
     const boardLocsCopy = JSON.parse(JSON.stringify(boardLocs));
+    let completedMove;
+    if (payload) {
+        completedMove = {
+            piece: payload.piece,
+            killedPiece: payload.killedPiece,
+            newCol: payload.newCol,
+            newRow: payload.newRow,
+            color: state.turn,
+        };
+    }
 
     switch (action.type) {
         case MOVE_PIECE: {
@@ -99,6 +110,10 @@ export default function piecesMap(state = initialState, action = {}) {
                             originalPawns: pawnsLocations,
                             win: state.win,
                             deadPieces,
+                            completedMoves: [
+                                ...state.completedMoves,
+                                completedMove,
+                            ],
                         };
                     }
                 }
@@ -118,6 +133,10 @@ export default function piecesMap(state = initialState, action = {}) {
                             originalPawns: pawnsLocations,
                             win: state.win,
                             deadPieces,
+                            completedMoves: [
+                                ...state.completedMoves,
+                                completedMove,
+                            ],
                         };
                     }
                 }
@@ -141,6 +160,10 @@ export default function piecesMap(state = initialState, action = {}) {
                             originalPawns: pawnsLocations,
                             win: state.win,
                             deadPieces,
+                            completedMoves: [
+                                ...state.completedMoves,
+                                completedMove,
+                            ],
                         };
                     }
                 }
@@ -164,6 +187,10 @@ export default function piecesMap(state = initialState, action = {}) {
                             originalPawns: pawnsLocations,
                             win: state.win,
                             deadPieces,
+                            completedMoves: [
+                                ...state.completedMoves,
+                                completedMove,
+                            ],
                         };
                     }
                 }
@@ -181,15 +208,19 @@ export default function piecesMap(state = initialState, action = {}) {
                 originalPawns: pawnsLocations,
                 win: state.win,
                 deadPieces,
+                completedMoves: [
+                    ...state.completedMoves,
+                    completedMove,
+                ],
             };
         }
         case CAPTURE_PIECE: {
             const capturingColor = boardLocs[payload.oldCol][payload.oldRow];
             boardLocsCopy[payload.oldCol][payload.oldRow] = null;
             boardLocsCopy[payload.newCol][payload.newRow] = capturingColor;
-            let gameOver = 'null';
+            let gameOver = win;
             const deadPieceCode = pieces[payload.killedPiece][2];
-            if (payload.killedPiece.charAt(0) === 'K') {
+            if (payload.killedPiece === 'KB' || payload.killedPiece === 'KW') {
                 gameOver = capturingColor;
             }
             return {
@@ -206,6 +237,10 @@ export default function piecesMap(state = initialState, action = {}) {
                     ...deadPieces,
                     [payload.killedPiece]: deadPieceCode,
                 },
+                completedMoves: [
+                    ...state.completedMoves,
+                    completedMove,
+                ],
             };
         }
 

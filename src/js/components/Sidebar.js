@@ -43,9 +43,16 @@ class Sidebar extends Component {
 
 
         return (
-            <div style={{ height: '75px', width: '500px', position: 'relative' }}>
+            <div
+              style={{
+                  width: '400px',
+                  position: 'relative',
+                  backgroundColor: 'lightblue',
+                  borderTop: '1px solid black',
+              }}
+            >
                 <h> Right now it is {turn}'s turn. </h>
-                <div style={{ height: '75px', width: '500px', display: 'flex', flexWrap: 'wrap' }}>
+                <div style={{ width: '400px', display: 'flex', flexWrap: 'wrap' }}>
                     {deadPieceViews}
                 </div>
             </div>

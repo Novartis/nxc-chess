@@ -12,6 +12,7 @@
         "react/jsx-indent": 0,
         "import/no-extraneous-dependencies": 0,
         "react/jsx-filename-extension": 0,
-        "new-cap": 0
+        "new-cap": 0,
+        "linebreak-style": 0
     }
 }
