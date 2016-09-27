@@ -24,20 +24,14 @@ class MoveHistory extends Component {
 
     render() {
         const { completedMoves } = this.props;
-        const completedMoveViews = [];
 
-        const numMoves = completedMoves.length;
-
-        for (let key = 0; key < numMoves; key++) {
-            const move = completedMoves[key];
-            const moveView = this.renderMove(move, Math.floor(key / 2));
-            completedMoveViews.push(moveView);
-        }
+        const moveViews = completedMoves.map((move, i) =>
+            this.renderMove(move, Math.floor(i / 2)));
 
         return (
             <div style={{ overflow: 'hidden', padding: '10px', paddingTop: '0px' }}>
                 <h2 style={{ marginTop: '0px', marginBottom: '5px' }} > Move History </h2>
-                { completedMoveViews }
+                { moveViews }
             </div>
         );
     }
